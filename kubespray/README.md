@@ -4,13 +4,13 @@
 ``` bash 
 nano /etc/network/interfaces
 
-```
+
 auto eth0
 iface eth0 inet static
   address 'адрес'
   netmask 'маска'
   gateway 'шлюз'
-```
+
 
 systemctl restart networking
 ```
