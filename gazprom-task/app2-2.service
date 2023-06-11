@@ -1,0 +1,17 @@
+[Unit]
+Description=Keeping my sources fresher than Arch Linux
+After=app1.service
+Requires=app1.service
+
+[Service]
+Environment=Port='9001'
+Enviroment=CONFIG_FILE_PATH="/root/gazprom/app2/conf/application-2.conf"
+Environment=JAVA_OPTS="-Xms512m -Xmx1G"
+
+ExecStart=nohup /root/gazprom/app2/bin/app2-2.sh -Dconfig.file=$CONFIG_FILE_PATH -Dhttp.port=$PORT -Dfile.encoding=UTF8 > application.log 2>&1 &
+ExecReload=nohup /root/gazprom/app2/bin/app2-2.sh  -Dconfig.file=$CONFIG_FILE_PATH -Dhttp.port=$PORT -Dfile.encoding=UTF8 > application.log 2>&1 &
+
+
+[Install]
+WantedBy=app1.service
+
