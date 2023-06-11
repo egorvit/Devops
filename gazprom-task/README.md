@@ -18,7 +18,7 @@ docker build -t app2:0.1.1 .
 
 ## Команды для запуска 
 ```bash
-    cd gazprom/
+cd gazprom/
 mv *.service /etc/systemd/system
 chmod +x app*/bin/app*
 
