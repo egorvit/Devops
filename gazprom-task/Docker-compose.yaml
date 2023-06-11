@@ -1,0 +1,46 @@
+version: '3.5'
+
+services:
+  app1:
+    restart: always
+    container_name: app1
+    image: app1:0.0.5
+    ports:
+      - "9001:9001"
+    networks:
+      - app
+    hostname: app1
+    volumes:
+      - /app1/conf:/app1/conf
+
+  app2-1:
+    restart: always
+    container_name: app2-1
+    image: app2:0.1.1
+    ports:
+    - "9002:9001"
+    networks:
+      - app
+    hostname: app2
+    depends_on:
+      - "app1"
+    volumes:
+      - /app2/conf:/app/conf
+
+  app2-2:
+    restart: always
+    container_name: app2-2
+    image: app2:0.1.1
+    ports:
+    - "9003:9001"
+    networks:
+      - app
+    hostname: app2
+    depends_on:
+      - "app1"
+    volumes:
+      - /app2/conf:/app/conf
+
+networks:
+  app:
+    name: "app"
