@@ -1,0 +1,32 @@
+#! groovy
+pipeline {
+    agent any
+
+    stages {
+        stage('Stage 1') {
+            steps {
+                echo "stage 1"
+            }
+        }
+
+        stage('Stage 2') {
+            steps {
+                input {
+                    message "Press 'Proceed' to execute Stage 2"
+                    ok "Proceed"
+                }
+                echo "stage 2"
+            }
+        }
+
+        stage('Stage 3') {
+            steps {
+                input {
+                    message "Press 'Proceed' to execute Stage 3"
+                    ok "Proceed"
+                }
+                echo "stage 3"
+            }
+        }
+    }
+}
