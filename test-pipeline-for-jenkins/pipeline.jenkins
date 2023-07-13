@@ -11,7 +11,7 @@ node {
         timeout(time: 2, unit: 'MINUTES') {
             script {
                 echo "Press 'Proceed' to execute Stage 3"
-                input message: 'Deploy to prod?', ok: 'Proceed'
+                input message: 'Deploy to dev?', ok: 'Proceed'
                 echo "Executing Stage 3"
             }
         }
