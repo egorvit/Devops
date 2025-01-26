@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "nginx-chart.fullname" . }}-config
+data:
+  nginx.conf: {{ .Values.config.nginx.conf | quote }}
+  index.html: {{ .Values.customIndexPage | quote }}

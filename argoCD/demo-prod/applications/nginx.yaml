@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name     : nginx
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    name     : in-cluster
+    namespace: nginx
+  source:
+    path   : "HelmCharts/Nginx"
+    repoURL: "git@github.com:adv4000/argocd.git"
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+      - ./values/values_prod.yaml
+      parameters:
+      - name: "container.image.tag"
+        value: stable
+
+  project: default
+  syncPolicy:
+    automated:
+      prune   : true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true        

@@ -1,0 +1,11 @@
+apiVersion: v2
+name: apache-chart
+description: A Helm chart for deploying Apache HTTP Server
+version: 0.1.0
+
+keywords:
+  - apache
+  - http
+
+maintainers:
+  - name : Lebedev Egor

@@ -1,0 +1,23 @@
+# Prod Override Values for apache Helm Chart
+
+replicaCount: 1
+
+image:
+  repository: httpd
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+apacheConfig:
+  customConfig: |
+    ServerName localhost
+    DocumentRoot /usr/local/apache2/htdocs
+
+indexPage: |
+  <html>
+    <head><title>Welcome to Prod stand!</title></head>
+    <body><h1>Hello, World!</h1></body>
+  </html>

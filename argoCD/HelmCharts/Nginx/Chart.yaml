@@ -1,0 +1,11 @@
+apiVersion: v2
+name: nginx-chart
+description: A Helm chart for Kubernetes Nginx deployment
+version: 0.1.0
+appVersion: "1.21.6"
+
+keywords:
+  - nginx
+
+maintainers:
+  - name : Lebedev Egor

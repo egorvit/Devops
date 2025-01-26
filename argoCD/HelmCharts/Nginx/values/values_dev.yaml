@@ -1,0 +1,41 @@
+# Dev Override Values for nginx Helm Chart
+
+replicaCount: 1
+
+image:
+  repository: nginx
+  tag: stable
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+config:
+  nginx.conf: |
+    server {
+        listen       80;
+        server_name  localhost;
+
+        location / {
+            root   /usr/share/nginx/html;
+            index  index.html index.htm;
+        }
+
+        error_page   500 502 503 504 /50x.html;
+        location = /50x.html {
+            root   /usr/share/nginx/html;
+        }
+    }
+
+customIndexPage: |
+  <html>
+    <head>
+      <title>Welcome to Dev stand!</title>
+    </head>
+    <body>
+      <h1>Hello from Nginx!</h1>
+      <p>This is a custom index page.</p>
+    </body>
+  </html>
+

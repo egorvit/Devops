@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "apache-chart.fullname" . }}-config
+data:
+  httpd.conf: |
+    {{ .Values.apacheConfig.customConfig | indent 4 }}
+  index.html: |
+    {{ .Values.indexPage | indent 4 }}
