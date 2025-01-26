@@ -10,7 +10,7 @@ spec:
     name     : in-cluster
     namespace: argocd
   source:
-    path   : "demo-dev/applications"
+    path   : "argoCD/demo-dev/applications"
     repoURL: "git@github.com:egorvit/Devops.git"
     targetRevision: HEAD
   project: default
