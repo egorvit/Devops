@@ -10,8 +10,8 @@ spec:
     name     : in-cluster
     namespace: nginx
   source:
-    path   : "HelmCharts/Nginx"
-    repoURL: "git@github.com:adv4000/argocd.git"
+    path   : "argoCD/HelmCharts/Nginx"
+    repoURL: "git@github.com:egorvit/Devops.git"
     targetRevision: HEAD
     helm:
       valueFiles:

@@ -10,8 +10,8 @@ spec:
     name     : in-cluster
     namespace: apache
   source:
-    path   : "HelmCharts/Apache"
-    repoURL: "git@github.com:adv4000/argocd.git"
+    path   : "argoCD/HelmCharts/Apache"
+    repoURL: "git@github.com:egorvit/Devops.git"
     targetRevision: HEAD
     helm:
       valueFiles:
