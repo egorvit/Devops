@@ -1,5 +1,5 @@
 apiVersion: v2
-name: nginx-chart
+name: nginx
 description: A Helm chart for Kubernetes Nginx deployment
 version: 0.1.0
 appVersion: "1.21.6"

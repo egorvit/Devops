@@ -1,5 +1,5 @@
 apiVersion: v2
-name: apache-chart
+name: apache
 description: A Helm chart for deploying Apache HTTP Server
 version: 0.1.0
 

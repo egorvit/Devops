@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "Chart.fullname" . }}
+  name: {{ include ".helm.name" . }}
   labels:
-    app: {{ include "Chart.name" . }}
+    app: {{ include ".helm.name" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "Chart.name" . }}
+      app: {{ include ".helm.name" . }}
   template:
     metadata:
       labels:
-        app: {{ include "Chart.name" . }}
+        app: {{ include ".helm.name" . }}
     spec:
       containers:
         - name: nginx
@@ -29,7 +29,7 @@ spec:
       volumes:
         - name: nginx-config
           configMap:
-            name: {{ include "Chart.fullname" . }}-config
+            name: {{ include ".helm.name" . }}-config
         - name: custom-index
           configMap:
-            name: {{ include "Chart.fullname" . }}-config
+            name: {{ include ".helm.name" . }}-config
