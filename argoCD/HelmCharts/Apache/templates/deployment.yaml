@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "apache-chart.fullname" . }}
+  name: {{ include "Chart.fullname" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "apache-chart.name" . }}
+      app: {{ include "Chart.name" . }}
   template:
     metadata:
       labels:
-        app: {{ include "apache-chart.name" . }}
+        app: {{ include "Chart.name" . }}
     spec:
       containers:
         - name: apache
@@ -27,7 +27,7 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: {{ include "apache-chart.fullname" . }}-config
+            name: {{ include "Chart.fullname" . }}-config
         - name: html-volume
           configMap:
-            name: {{ include "apache-chart.fullname" . }}-config
+            name: {{ include "Chart.fullname" . }}-config
