@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: {{ include ".helm.name" . }}-config
 data:
-  nginx.conf: {{ .Values.config.nginx.conf | quote }}
-  index.html: {{ .Values.customIndexPage | quote }}
+  nginx.conf: {{ .Values.config | indent 4 }}
+  index.html: {{ .Values.customIndexPage | indent 4 }}

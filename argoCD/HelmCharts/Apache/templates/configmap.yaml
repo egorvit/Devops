@@ -3,7 +3,5 @@ kind: ConfigMap
 metadata:
   name: {{ include ".helm.name" . }}-config
 data:
-  httpd.conf: |
-    {{ .Values.apacheConfig.customConfig | indent 4 }}
-  index.html: |
-    {{ .Values.indexPage | indent 4 }}
+  httpd.conf: {{ .Values.apacheConfig.customConfig | indent 4 }}
+  index.html: {{ .Values.indexPage | indent 4 }}
