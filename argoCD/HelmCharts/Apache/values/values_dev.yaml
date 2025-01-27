@@ -13,8 +13,34 @@ service:
 
 apacheConfig:
   customConfig: |
-    ServerName localhost
-    DocumentRoot /usr/local/apache2/htdocs
+    # Указываем, какой модуль загружать
+    LoadModule dir_module modules/mod_dir.so
+
+    ServerRoot "/etc/httpd"
+    Listen 80
+
+    ServerName localhost:80
+
+    DocumentRoot "/var/www/html"
+
+    <Directory "/var/www/html">
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
+
+    ErrorLog "logs/error_log"
+    CustomLog "logs/access_log" common
+
+    TypesConfig /etc/mime.types
+
+    <Directory "/var/www/html">
+        AllowOverride All
+    </Directory>
+
+    <IfModule mod_ssl.c>
+        SSLProtocol all -SSLv2 -SSLv3
+    </IfModule>
 
 indexPage: |
   <html>
