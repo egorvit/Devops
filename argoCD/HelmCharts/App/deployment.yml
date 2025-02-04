@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  labels:
+    app: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: app
+        image: egorlebedev01/app:0.0.2
+        ports:
+        - containerPort: 8082
+        env:
+        - name: KEYCLOAK_CLIENT_ID
+          value: "app"
+        - name: KEYCLOAK_CLIENT_SECRET
+          value: "6wzVCDcWjQxbl6vVvTDWLiaTQRyk1YR5"
+        - name: KEYCLOAK_AUTHORIZATION_URI
+          value: "http://keycloak.keycloak.svc.cluster.local/auth/realms/For_APP/protocol/openid-connect/auth"
+        - name: KEYCLOAK_USER_INFO_URI
+          value: "http://keycloak.keycloak.svc.cluster.local/auth/realms/For_APP/protocol/openid-connect/userinfo"
+        - name: KEYCLOAK_TOKEN_URI
+          value: "http://keycloak.keycloak.svc.cluster.local/auth/realms/For_APP/protocol/openid-connect/token"
+        - name: KEYCLOAK_LOGOUT_URI
+          value: "http://keycloak.keycloak.svc.cluster.local/auth/realms/For_APP/protocol/openid-connect/logout"
+        - name: KEYCLOAK_JWK_SET_URI
+          value: "http://keycloak.keycloak.svc.cluster.local/auth/realms/For_APP/protocol/openid-connect/certs"
+      resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "1Gi"
+            cpu: "1" 
